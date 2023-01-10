@@ -1,1 +1,1 @@
-Just drop [the latest DLL](https://github.com/sebastientromp/hs-melon-random-mercenary-skin/releases/latest/download/RandomMercenarySkin.dll) into your Hearthstone Mods folder (you need to have installed MelonLoader first)
+Just drop [the latest DLL](https://github.com/sebastientromp/hs-melon-increase-game-speed-vs-ai/releases/latest/download/IncreaseAnimationSpeedVsAI.dll) into your Hearthstone Mods folder (you need to have installed MelonLoader first)
