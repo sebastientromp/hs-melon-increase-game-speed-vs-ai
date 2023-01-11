@@ -18,6 +18,12 @@ namespace IncreaseAnimationSpeedVsAI
             var harmony = this.HarmonyInstance;
             harmony.PatchAll(typeof(GameMgrPatcher));
         }
+
+        public override void OnDeinitializeMelon()
+        {
+            base.OnDeinitializeMelon();
+            TimeScaleMgr.Get().SetGameTimeScale(1);
+        }
     }
 
     public static class GameMgrPatcher
