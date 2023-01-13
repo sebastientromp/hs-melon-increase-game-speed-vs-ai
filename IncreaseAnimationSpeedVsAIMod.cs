@@ -14,6 +14,7 @@ namespace IncreaseAnimationSpeedVsAI
 
         public override void OnInitializeMelon()
         {
+            base.OnInitializeMelon();
             IncreaseAnimationSpeedVsAIMod.SharedLogger = LoggerInstance;
             var harmony = this.HarmonyInstance;
             harmony.PatchAll(typeof(GameMgrPatcher));
@@ -41,7 +42,10 @@ namespace IncreaseAnimationSpeedVsAI
         {
             var isAgainstAI = AI_GAME_TYPES.Contains(GameMgr.Get()?.GetGameType());
             var timeScale = isAgainstAI ? 4 : 1;
-            IncreaseAnimationSpeedVsAIMod.SharedLogger.Msg($"Starting game for gameType: {GameMgr.Get().GetGameType()} with timeScale: {timeScale}");
+            if (isAgainstAI)
+            {
+                IncreaseAnimationSpeedVsAIMod.SharedLogger.Msg($"Starting game for gameType: {GameMgr.Get().GetGameType()} with timeScale: {timeScale}");
+            }
             TimeScaleMgr.Get().SetGameTimeScale(timeScale);
         }
 
@@ -49,7 +53,7 @@ namespace IncreaseAnimationSpeedVsAI
         [HarmonyPostfix]
         public static void OnGameEndedPostfix()
         {
-            IncreaseAnimationSpeedVsAIMod.SharedLogger.Msg($"Ending game");
+            //IncreaseAnimationSpeedVsAIMod.SharedLogger.Msg($"Ending game");
             TimeScaleMgr.Get().SetGameTimeScale(1);
         }
     }
