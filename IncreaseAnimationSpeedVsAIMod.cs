@@ -18,6 +18,15 @@ namespace IncreaseAnimationSpeedVsAI
             IncreaseAnimationSpeedVsAIMod.SharedLogger = LoggerInstance;
             var harmony = this.HarmonyInstance;
             harmony.PatchAll(typeof(GameMgrPatcher));
+
+            try
+            {
+                GameMgrPatcher.OnGameSetupPostfix();
+            }
+            catch (Exception e)
+            {
+                IncreaseAnimationSpeedVsAIMod.SharedLogger.Msg($"Not in a game? {e.Message}");
+            }
         }
 
         public override void OnDeinitializeMelon()
